@@ -20,7 +20,7 @@
 |-----------|------------------|
 | **Платформа** | .NET Framework 4.7.2 |
 | **UI-фреймворк** | WPF (XAML) |
-| **ORM** | Entity Framework 6 (Database First) |
+| **ORM** | Entity Framework 5 (Database First) |
 | **База данных** | SQL Server LocalDB (`(localdb)\MSSQLLocalDB`) |
 | **Язык** | C# |
 | **Среда** | Visual Studio 2019/2022 |
