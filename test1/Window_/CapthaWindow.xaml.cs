@@ -19,21 +19,28 @@ namespace test1.Window_
     /// </summary>
     public partial class CapthaWindow : Window
     {
-        bool CapthaPass = false;
+        public bool OK { get; private set; }
         public CapthaWindow()
         {
             InitializeComponent();
         }
 
-        private void CaptchGrid_Click(object sender, MouseButtonEventArgs e)
+        private void Click(object s, MouseButtonEventArgs e)
         {
-            if (e.OriginalSource is Image img && img.RenderTransform is RotateTransform rot)
+            if (e.OriginalSource is Image img)
             {
-                rot.Angle = (rot.Angle + 90) % 360;
-                CapthaPass = CaptchGrid.Children.OfType<Image>()
-                    .All(i => ((RotateTransform)i.RenderTransform).Angle == 0);
+                var r = (RotateTransform)img.RenderTransform;
+                r.Angle = (r.Angle + 90) % 360; // Крутим на 90°
+                Check();                        // Проверяем, все ли встали
             }
-
         }
+
+        private void Check()
+        {
+            // Кнопка включится ТОЛЬКО когда у всех картинок угол == 0
+            Btn.IsEnabled = G.Children.OfType<Image>().All(i => ((RotateTransform)i.RenderTransform).Angle == 0);
+        }
+
+        private void Ok(object s, RoutedEventArgs e) { OK = true; Close(); }
     }
 }

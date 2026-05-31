@@ -6,28 +6,30 @@
         xmlns:local="clr-namespace:test1.Window_"
         mc:Ignorable="d"
         Title="CapthaWindow" Height="400" Width="385">
-    <Grid>
-        <UniformGrid x:Name="CaptchGrid" MouseLeftButtonDown="CaptchGrid_Click" Background="Transparent" Grid.Column="1">
-            <Image Source="/Material_/CapthaIMG/1.png" RenderTransformOrigin="0.5, 0.5">
+    <StackPanel Margin="10">
+        <TextBlock Text="Нажми на картинки, чтобы они встали ровно:" TextAlignment="Center" Margin="5"/>
+        <UniformGrid x:Name="G" Rows="2" Columns="2" Width="180" Height="180" MouseLeftButtonDown="Click">
+            <Image Source="/Material_/CapthaIMG/1.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform Angle="90"/>
                 </Image.RenderTransform>
             </Image>
-            <Image Source="/Material_/CapthaIMG/2.png" RenderTransformOrigin="0.5, 0.5">
+            <Image Source="/Material_/CapthaIMG/2.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform Angle="180"/>
                 </Image.RenderTransform>
             </Image>
-            <Image Source="/Material_/CapthaIMG/3.png" RenderTransformOrigin="0.5, 0.5">
+            <Image Source="/Material_/CapthaIMG/3.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform Angle="270"/>
                 </Image.RenderTransform>
             </Image>
-            <Image Source="/Material_/CapthaIMG/4.png" RenderTransformOrigin="0.5, 0.5">
+            <Image Source="/Material_/CapthaIMG/4.png" RenderTransformOrigin="0.5,0.5">
                 <Image.RenderTransform>
                     <RotateTransform Angle="90"/>
                 </Image.RenderTransform>
             </Image>
         </UniformGrid>
-    </Grid>
+        <Button Content="Подтвердить" x:Name="Btn" IsEnabled="False" Click="Ok" Height="30" Margin="0,10,0,0"/>
+    </StackPanel>
 </Window>

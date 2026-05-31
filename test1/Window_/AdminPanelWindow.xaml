@@ -17,15 +17,7 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="5,5,5,5">
             <TextBox x:Name="tbSearch" Margin="0,0,0,5" TextChanged="TbSearch_TextChanged"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <RadioButton x:Name="rbAsc" Content="По возрастанию" IsChecked="True" 
-                         GroupName="Sort" Checked="LoadData" Margin="0,0,10,0"/>
-                <RadioButton x:Name="rbDesc" Content="По убыванию" 
-                         GroupName="Sort" Checked="LoadData"/>
-            </StackPanel>
             <DataGrid x:Name="dgTab" AutoGenerateColumns="True" IsReadOnly="True" Height="Auto"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Uid="1" Content="Обновление" Margin="10" Height="25" Width="100" Click="Button_Click"/>

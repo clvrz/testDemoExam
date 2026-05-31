@@ -34,8 +34,8 @@ namespace test1.Window_
             {
                 case 1: dgTab.ItemsSource = new TestCarDbEntities().Cars.ToList(); break;
                 case 2: new AddWindow().Show(); break;
-                case 3: new Edit().Show(); break;
-                case 4: new Delete().Show(); break;
+                //case 3: new Edit().Show(); break;
+                //case 4: new Delete().Show(); break;
             }
         }
 
@@ -49,20 +49,6 @@ namespace test1.Window_
                     : db.Cars.Where(u => u.Model.Contains(text)).ToList();
 
                 dgTab.ItemsSource = data;
-            }
-        }
-
-        private void LoadData(object sender, RoutedEventArgs e)
-        {
-            using (var db = new TestCarDbEntities())
-            {
-                var query = db.Cars.AsQueryable();
-                if (!string.IsNullOrWhiteSpace(tbSearch.Text))
-                {
-                    query = query.Where(u => u.Model.Contains(tbSearch.Text));
-                }
-                query = rbAsc.IsChecked == true ? query.OrderBy(u => u.Model)
-                    : query.OrderBy(u => u.Model);
             }
         }
     }

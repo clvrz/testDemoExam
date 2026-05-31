@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,23 +30,30 @@ namespace test1.Window_
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (AuthService.Auth(logintb.Text, passtb.Password))
+            var cap = new CapthaWindow();
+            cap.ShowDialog();
+
+            if (cap.OK) 
             {
-                if (new TestCarDbEntities().Users.FirstOrDefault(u => u.Login == logintb.Text).RoleID == 1)
+                if (AuthService.Auth(logintb.Text, passtb.Password))
                 {
-                    new Window_.AdminPanelWindow().Show();
+                    if (new TestCarDbEntities().Users.FirstOrDefault(u => u.Login == logintb.Text).RoleID == 1)
+                    {
+                        new Window_.AdminPanelWindow().Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        new Window_.UsersWindow().Show();
                     this.Close();
+                    }
                 }
                 else
                 {
-                    new Window_.UsersWindow().Show();
-                    this.Close();
+                    errortb.Text = "Неверный логин или пароль";
                 }
             }
-            else
-            {
-                errortb.Text = "Неверный логин или пароль";
-            }
+            else errortb.Text = "Капча не пройдена";
         }
     }
 }
