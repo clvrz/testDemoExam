@@ -43,7 +43,6 @@ namespace test1.Window_
                 dgTab.ItemsSource = data;
             }
         }
-
         private void LoadData()
         {
             using (var db = new TestCarDbEntities())
