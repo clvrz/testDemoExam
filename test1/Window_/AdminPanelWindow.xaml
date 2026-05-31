@@ -17,7 +17,23 @@
         </StackPanel>
         <StackPanel Grid.Row="1" Margin="5,5,5,5">
             <TextBox x:Name="tbSearch" Margin="0,0,0,5" TextChanged="TbSearch_TextChanged"/>
-            <DataGrid x:Name="dgTab" AutoGenerateColumns="True" IsReadOnly="True" Height="Auto"/>
+            <DataGrid x:Name="dgTab" AutoGenerateColumns="True" IsReadOnly="True" CanUserAddRows="False" Height="Auto"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" >
+            <Button Content="Обновление" Click="Button_Click" Margin="10" Height="25" Width="100"/>
+            <Button Content="Добавление" Click="BtnAdd_Click" Margin="10" Height="25" Width="100"/>
+            <Button Content="Редактирование" Click="BtnEdit_Click" Margin="10" Height="25" Width="100"/>
+            <Button Content="Удаление" Click="BtnDel_Click" Margin="10" Height="25" Width="100"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Uid="1" Content="Обновление" Margin="10" Height="25" Width="100" Click="Button_Click"/>
+            <Button x:Uid="2" Content="Добавление" Margin="10" Height="25" Width="100"/>
+            <Button x:Uid="3" Content="Редактирование" Margin="10" Height="25" Width="100"/>
+            <Button x:Uid="4" Content="Удаление" Margin="10" Height="25" Width="100"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Uid="1" Content="Обновление" Margin="10" Height="25" Width="100" Click="Button_Click"/>

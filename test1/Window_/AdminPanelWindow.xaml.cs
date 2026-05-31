@@ -28,15 +28,7 @@ namespace test1.Window_
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(((Button)sender).Uid, out var id)) return;
-
-            switch (id)
-            {
-                case 1: dgTab.ItemsSource = new TestCarDbEntities().Cars.ToList(); break;
-                case 2: new AddWindow().Show(); break;
-                //case 3: new Edit().Show(); break;
-                //case 4: new Delete().Show(); break;
-            }
+            LoadData();
         }
 
         private void TbSearch_TextChanged(object sender, TextChangedEventArgs e)
@@ -50,6 +42,52 @@ namespace test1.Window_
 
                 dgTab.ItemsSource = data;
             }
+        }
+
+        private void LoadData()
+        {
+            using (var db = new TestCarDbEntities())
+            {
+                dgTab.ItemsSource = db.Cars.ToList(); // 👈 Заменить Cars на нужную таблицу
+            }
+        }
+
+        // ➕ Добавить
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var item = new Cars(); // 👈 Заменить Cars на нужный класс
+            var dlg = new CRUDWindow(item, true); // true = новый
+            if (dlg.ShowDialog() == true) LoadData();
+        }
+
+        // ✏️ Изменить
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgTab.SelectedItem is Cars item)
+            {
+                var dlg = new CRUDWindow(item, false); // false = редактирование
+                if (dlg.ShowDialog() == true) LoadData();
+            }
+            else MessageBox.Show("Выберите строку");
+        }
+
+        // 🗑️ Удалить
+        private void BtnDel_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgTab.SelectedItem is Cars item)
+            {
+                if (MessageBox.Show("Удалить?", "Подтверждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    using (var db = new TestCarDbEntities())
+                    {
+                        db.Cars.Attach(item);
+                        db.Cars.Remove(item);
+                        db.SaveChanges();
+                    }
+                    LoadData();
+                }
+            }
+            else MessageBox.Show("Выберите строку");
         }
     }
 }
