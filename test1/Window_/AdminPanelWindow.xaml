@@ -27,19 +27,5 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Uid="1" Content="Обновление" Margin="10" Height="25" Width="100" Click="Button_Click"/>
-            <Button x:Uid="2" Content="Добавление" Margin="10" Height="25" Width="100"/>
-            <Button x:Uid="3" Content="Редактирование" Margin="10" Height="25" Width="100"/>
-            <Button x:Uid="4" Content="Удаление" Margin="10" Height="25" Width="100"/>
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-            </StackPanel>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Uid="1" Content="Обновление" Margin="10" Height="25" Width="100" Click="Button_Click"/>
-            <Button x:Uid="2" Content="Добавление" Margin="10" Height="25" Width="100"/>
-            <Button x:Uid="3" Content="Редактирование" Margin="10" Height="25" Width="100"/>
-            <Button x:Uid="4" Content="Удаление" Margin="10" Height="25" Width="100"/>
-        </StackPanel>
     </Grid>
 </Window>
